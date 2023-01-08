@@ -2,6 +2,7 @@
 use std::fs;
 use text_io;
 
+// Requires input files to have LF style line endings!
 pub fn run() {
     let input = fs::read_to_string("./assets/input_05.txt").expect("Could not load file!");
 

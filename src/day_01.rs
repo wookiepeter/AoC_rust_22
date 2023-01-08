@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 use std::fs::{self};
 
+// Requires input files to have LF style line endings!
 pub fn run() {
     let data = fs::read_to_string("./assets/input_01.txt").expect("File didn't load properly.");
 
