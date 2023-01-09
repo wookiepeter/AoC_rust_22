@@ -3,14 +3,14 @@ use std::{collections::HashSet, fs};
 
 pub fn run() {
     let input = fs::read_to_string("./assets/input_09.txt").expect("File not found!");
-    let test_input = fs::read_to_string("./assets/input_09_test.txt").expect("File not found!");
-    let part2_test_input =
+    let _test_input = fs::read_to_string("./assets/input_09_test.txt").expect("File not found!");
+    let _part2_test_input =
         fs::read_to_string("./assets/input_09_test_2.txt").expect("File not found!");
 
-    // part1(&test_input);
+    // part1(&_test_input);
 
     // part1(&input);
-    // part2(&part2_test_input);
+    // part2(&_part2_test_input);
     part2(&input);
 }
 

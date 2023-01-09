@@ -5,10 +5,10 @@ use itertools::Itertools;
 
 // requires input files to have LF line endings!
 pub fn run() {
-    let test_input = fs::read_to_string("./assets/input_11_test.txt").expect("File not found!");
+    let _test_input = fs::read_to_string("./assets/input_11_test.txt").expect("File not found!");
     let input = fs::read_to_string("./assets/input_11.txt").expect("File not found!");
 
-    // part1(&test_input);
+    // part1(&_test_input);
     part2(&input);
 }
 
