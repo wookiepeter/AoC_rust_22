@@ -8,10 +8,19 @@ pub fn run() {
     let (mut map, highest_y) = build_map(&input);
 
     println!("Highest y-value: {}", highest_y);
-    let total_sand = part1(&mut map, highest_y);
+    let sand_on_structures = part1(&mut map, highest_y);
 
+    println!("Total sand: {}", sand_on_structures);
+
+    add_lower_wall_to_map(&mut map, highest_y + 2);
+
+    let til_blockage = part2(&mut map);
     map.print_map();
-    println!("Total sand: {}", total_sand);
+
+    println!(
+        "Total sand until blockage: {}",
+        sand_on_structures + til_blockage
+    );
 }
 
 fn build_map(input: &str) -> (Map<char>, usize) {
@@ -53,7 +62,7 @@ fn build_map(input: &str) -> (Map<char>, usize) {
         }
     });
 
-    (map, highest_y + 1)
+    (map, highest_y)
 }
 
 fn part1(map: &mut Map<char>, max_y: usize) -> u32 {
@@ -68,6 +77,33 @@ fn part1(map: &mut Map<char>, max_y: usize) -> u32 {
                     }
                 }
                 None => {
+                    map.set(&cur_pos, 'o');
+                    break;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+fn add_lower_wall_to_map(map: &mut Map<char>, highest_y: usize) {
+    map.array[highest_y] = vec!['#'; map.map_size.0];
+}
+
+/// This function fills up the existing map -> therefore if you hand it a map that was already
+/// modified by fn part1(...) it will only return the remaining sand needed to block the input
+fn part2(map: &mut Map<char>) -> u32 {
+    for sand in 0..(map.map_size.0 * map.map_size.1) {
+        let mut cur_pos = (500, 0);
+        loop {
+            match map.check_below(cur_pos) {
+                Some(value) => {
+                    cur_pos = value;
+                }
+                None => {
+                    if cur_pos == (500, 0) {
+                        return sand as u32 + 1;
+                    }
                     map.set(&cur_pos, 'o');
                     break;
                 }
