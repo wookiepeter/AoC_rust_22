@@ -105,6 +105,14 @@ fn part1(input: &str) -> u32 {
     0
 }
 
+/// Fields: 
+/// - the value of the Search-Tree so far 
+/// - some struct conveying what nodes are still available or already blocked
+/// - 
+struct STNode {
+
+}
+
 #[derive(Debug)]
 struct Node {
     name: String,
@@ -125,3 +133,4 @@ impl Hash for Node {
         self.name.hash(state);
     }
 }
+
